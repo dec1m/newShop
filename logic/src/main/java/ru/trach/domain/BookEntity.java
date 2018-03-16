@@ -32,7 +32,7 @@ public class BookEntity implements Serializable {
     @Column(name = "author",nullable = false,length = 200)
     private String author;
     @Column(name = "img",nullable = false,length = 200)
-    private String imgUrl = "default";
+    private String imgUrl = "default"; //todo Realise to Output File Image
     @Column(name = "description",nullable = false,length = 2000)
     private String description;
     @Column(name = "price",nullable = false)
@@ -62,6 +62,25 @@ public class BookEntity implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public BookEntity(Long id,String name, String author, String imgUrl, String description, int price) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.imgUrl = imgUrl;
+        this.description = description;
+        this.price = price;
+    }
+    public BookEntity(String name, String author, String imgUrl, String description, int price) {
+        this.name = name;
+        this.author = author;
+        this.imgUrl = imgUrl;
+        this.description = description;
+        this.price = price;
+    }
+
+    public BookEntity() {
     }
 
     @Override
