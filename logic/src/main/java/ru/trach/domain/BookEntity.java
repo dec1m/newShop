@@ -13,6 +13,13 @@ import javax.persistence.*;
  * @author decim
  */
 @Entity
+@SuppressWarnings("ALL")
+@NamedQueries({
+        @NamedQuery(name= BookEntity.GET_BY_NAME, query = "SELECT b FROM BookEntity b WHERE b.name = :name"),
+        @NamedQuery(name= BookEntity.REMOVE, query = "DELETE FROM BookEntity b WHERE b.id = :id"),
+        @NamedQuery(name= BookEntity.FIND_ALL, query = "SELECT b FROM BookEntity b"),
+        @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id")
+})
 public class BookEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,7 +39,7 @@ public class BookEntity implements Serializable {
     private int price;
 
     
-    public static final String GET_ALL = "BOOK_GET_ALL";
+    public static final String FIND_ALL = "BOOK_FIND_ALL";
     public static final String REMOVE = "BOOK_REMOVE";
     public static final String GET_BY_NAME = "BOOK_GET_BY_NAME";
     public static final String GET_BY_ID = "BOOK_GET_BY_ID";

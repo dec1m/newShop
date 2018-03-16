@@ -7,7 +7,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-    <groupId>ru.trach</groupId>
+
     <artifactId>ear</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ear</packaging>
@@ -17,7 +17,20 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-  
+    <dependencies>
+        <dependency>
+            <groupId>ru.trach</groupId>
+            <artifactId>logic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <dependency>
+            <groupId>ru.trach</groupId>
+            <artifactId>view</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
