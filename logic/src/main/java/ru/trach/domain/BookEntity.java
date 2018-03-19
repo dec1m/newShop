@@ -20,6 +20,7 @@ import javax.persistence.*;
         @NamedQuery(name= BookEntity.FIND_ALL, query = "SELECT b FROM BookEntity b"),
         @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id")
 })
+@Table(name = "Books")
 public class BookEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -85,9 +86,16 @@ public class BookEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ru.trach.domain.BookEntity[ id=" + id + " ]";
+        return "BookEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
-    
+
     public Long getId() {
         return id;
     }
