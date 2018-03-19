@@ -1,5 +1,6 @@
 package ru.trach.beans;
 
+import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
 import ru.trach.ejb.BookManagerBean;
 
@@ -19,11 +20,11 @@ public class BookBean {
 
     @EJB
     private BookManagerBean bookManager;
-
+    private static final Logger logger = Logger.getLogger(BookBean.class);
 
     public void create(){
         BookEntity book = new BookEntity(name,author,imgUrl,description,price);
-
+       logger.info("Created Book:" + book);
         bookManager.create(book);
     }
 
@@ -32,6 +33,7 @@ public class BookBean {
     }
 
     public BookEntity getById(long id){
+        logger.info("GetByIdBook, id = " + id);
         //todo
         return  null;
     }

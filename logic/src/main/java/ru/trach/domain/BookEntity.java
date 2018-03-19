@@ -84,6 +84,7 @@ public class BookEntity implements Serializable {
     public BookEntity() {
     }
 
+
     @Override
     public String toString() {
         return "BookEntity{" +
