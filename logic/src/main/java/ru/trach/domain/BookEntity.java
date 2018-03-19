@@ -83,11 +83,19 @@ public class BookEntity implements Serializable {
     public BookEntity() {
     }
 
+
     @Override
     public String toString() {
-        return "ru.trach.domain.BookEntity[ id=" + id + " ]";
+        return "BookEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
-    
+
     public Long getId() {
         return id;
     }

@@ -25,6 +25,7 @@ public class BookBean {
         BookEntity book = new BookEntity(name,author,imgUrl,description,price);
 
         bookManager.create(book);
+
     }
 
     public List<BookEntity> findAll(){

@@ -2,6 +2,8 @@ package ru.trach.ejb;
 
 
 import java.util.List;
+
+import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -14,10 +16,12 @@ import javax.persistence.TypedQuery;
 @Stateless
 @LocalBean
 public class BookManagerBean {
+   private final static Logger logger = Logger.getLogger(BookManagerBean.class);
      @PersistenceContext(unitName = "PUnit")
      protected EntityManager entityManager;
      
      public void create(BookEntity book) {
+          logger.error(book.toString());
           entityManager.persist(book);
 
      }
