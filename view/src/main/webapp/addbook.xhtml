@@ -5,20 +5,40 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-</h:head>
+<h:head><h:outputStylesheet name="css/style.css" /></h:head>
+<div id="header">
+    <center id='eugen'><a href='/'>EugenSpaceTechnologyInterProGalaxyOneGeneration™</a></center>
+</div>
+
+<h:button  class="buttonIndex" value="Главная" outcome="index.xhtml"/>
+<h:button class="buttonIndex" value="Добавить книгу" outcome="addbook.xhtml"/>
+<h:button class="buttonIndex" value="Книги" outcome="products.xhtml"/>
+<h:button class="buttonIndex" value="Войти" outcome="login.xhtml"/>
+<h:button id="register" class="buttonIndex" value="Регистрация" outcome="register.xhtml"/>
+
+
 <h:body>
-    <h:form>
-        <h2>Добавить книгу</h2>
-        <h6><a href="index">Вернутся на главную</a></h6>
+    <h:form enctype="multipart/form-data">
+        <div id="divReg">
+        <h2>Добавить книгу</h2><br/>
 
-        Имя: <h:inputText value="#{bookBean.name}"/> <br/>
-        Автор: <h:inputText value="#{bookBean.author}"/> <br/>
-        Цена: <h:inputText value="#{bookBean.price}"/> <br/>
-        Описание: <h:inputTextarea value="#{bookBean.description}"/> <br/>
-        <h:commandButton value="Создать товар" action="#{bookBean.create}"/>
 
+        Имя: <h:inputText class="inputReg" value="#{bookBean.name}"/><br/><br/>
+        Автор: <h:inputText class="inputReg" value="#{bookBean.author}"/><br/><br/>
+        Цена: <h:inputText class="inputReg" value="#{bookBean.price}"/><br/> <br/>
+        Описание:<br/> <h:inputTextarea rows="10" cols="80" class="inputRegDesc" value="#{bookBean.description}"/> <br/> <br/>
+        Изображение: <h:inputFile value="#{bookBean.file}"/>
+        Жанр:<h:selectOneMenu value="#{bookBean.genre}">
+                <f:selectItem itemLabel="Программирование" itemValue="Программирование"/>
+                <f:selectItem itemLabel="Психология" itemValue="Психология"/>
+                <f:selectItem itemLabel="Биография" itemValue="Биография"/>
+                <f:selectItem itemLabel="Художественные" itemValue="Художественные"/>
+                <f:selectItem itemLabel="Фантастика" itemValue="Фантастика"/>
+             </h:selectOneMenu><br/><br/>
+
+
+        <h:commandButton class="buttonIndex" value="Создать товар" action="#{bookBean.create}"/>
+        </div>
     </h:form>
 </h:body>
 

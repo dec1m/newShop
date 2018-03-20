@@ -1,0 +1,444 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html{
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    color: #333;
+    background: url("#{resource['img:background.png']}") repeat;
+    font-size: 1em;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 135%;
+}
+a{
+    color: #1c1a18;
+    text-decoration: none;
+
+}
+a:hover{
+    cursor: pointer;
+    color: white;
+
+}
+a:active{color: #8ce4a6;}
+#header, footer{
+    width: 98%;
+    background-color: #fff;
+    float: left;
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+
+}
+.buttonIndex{
+    height: 70px;
+    width: 20%;
+    background-color: #00884f;
+    border: 0px solid #00884f;
+    font-size: 1.2em;
+
+
+}
+.buttonIndex:hover{
+    background-color: #006f42;
+    cursor: pointer;
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+
+}
+
+
+
+/*Блок Выделения..Selection block*/
+
+::selection {background: #6f1c7b; color: #fff;}
+::-moz-selection {background: #6f1c7b; color: #fff;
+}
+#header{
+    height: 80px;
+    border-bottom: 1px solid silver;
+    padding: 1%;
+    background-color: #1c1a18;
+}
+
+#eugen{
+    font-family: 'Cinzel', serif;
+    font-size: 1em;
+    color: white;
+}
+#eugen a{
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: whitesmoke;
+}
+#eugen a:hover{
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: #6f1c7b;
+}
+
+
+.contactReg{
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Russo One', sans-serif;
+    margin-left: 20px;
+    background-color: #6f1c7b;
+    padding: 5px;
+    border-radius: 5px;
+}
+.contactAu{
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: black;
+    font-size: 1.3em;
+    font-family: 'Russo One', sans-serif;
+    margin-left: 20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+.contactAu:hover {
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: white;
+    background-color: #6f1c7b;
+}
+.contactReg:hover {
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    background-color:white;
+    color:black;
+}
+#divReg{
+    margin-top: 20px;
+    margin: auto;
+    width: 60%;
+    border: 1px solid #1c1a18;
+    padding: 10px;
+}
+.inputReg{
+
+    border-radius: 5px;
+    border: 2px solid silver;
+    padding: 5px;
+    float: right;
+    margin-right: 55%;
+    width: 200px;
+    height: 27px;
+    font-size: 1.2em;
+    font-family: 'Sigmar One', cursive;
+    color: #6f1c7b;
+}
+#inputRegDesc{
+    border-radius: 5px;
+    border: 2px solid silver;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 1.4em;
+    font-family: 'Sigmar One', cursive;
+    color: #6f1c7b;
+}
+
+
+.inputReg:focus{
+    border: 2px solid #006f42;
+
+}
+/*Регистрация input*/
+.but_reg{
+    background-color: red;
+    border-radius: 1px;
+    width: 2222px;
+    height: 33px;
+
+
+}
+form #send_reg{
+    border: 1px solid #6f1c7b;
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: black;
+    font-size: 1.3em;
+    font-family: 'Russo One', sans-serif;
+    margin-right: 200px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-left: 50%;
+
+
+}
+form #send_reg:hover{
+    background-color: #6f1c7b;
+    color: white;
+}
+#send_auth{
+    border: 1px solid #6f1c7b;
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: black;
+    font-size: 1.3em;
+    font-family: 'Russo One', sans-serif;
+    background-color: white;
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-left:20px;
+
+
+}
+#send_auth:hover{
+    background-color: #6f1c7b;
+    color: white;
+}
+#send_auth_reg{
+    border: 1px solid #6f1c7b;
+    transition: all.6s ease;
+    -moz-transition: all.6s ease;
+    -webkit-transition: all.6s ease;
+    -ms-transition: all.6s ease;
+    color: white;
+    font-size: 1.3em;
+    font-family: 'Russo One', sans-serif;
+
+    padding: 5px;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #6f1c7b;
+
+
+}
+#send_auth_reg:hover{
+    background-color: white;
+    color: black;
+}
+#auth{
+    margin-right: 5%;
+    float: right;
+    margin-top: 20%;
+
+}
+#error_form{
+    color: red;
+    margin-left:2%;
+    border-radius: 120px;
+    padding: 7px;
+}
+
+#hed_reg{
+    margin-bottom: 5%;
+}
+#reg_field  {
+    width: 220px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid #6f1c7b;
+    padding: 5px;
+    margin-left: 20px;
+    outline: none;
+}
+#field_captcha{
+    width: 90px;
+    height: 25px;
+    border-radius: 10px;
+    border: 1px solid #6f1c7b;
+    padding: 5px;
+    outline: none;
+
+
+}
+#img_captcha{
+
+    border-radius: 10px;
+}
+#reg input:focus{
+    border: 2px solid #f48b8b;
+    width: 205px;
+    height: 33px;
+}
+#wrapper{
+    margin-top: 20px;
+    float: left;
+    width: 100%;
+
+}
+#wrapper #artiсles{
+    float: left;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#wrapper #artiсless article{
+    float: left;
+    width: 30%;
+    border: 1px solid silver;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin-right: 2%;
+    min-height: 400px;
+}
+
+#wrapper #artiсlesss article{
+    margin-left:5%;
+    float: left;
+    width: 60%;
+    border: 1px solid silver;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin-right: 2%;
+    min-height: 400px;
+}
+#wrapper #artiсless article img{
+    margin-left: 23%;
+    margin-top: 20px;
+    width: auto;
+    height: 200px;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 1px solid silver;
+}
+/*Стили для футера*/
+#menuHrefs a {
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 5px;
+    color:  #6f1c7b;
+    font-family: Comic Sans MS, sans-serif;
+
+
+}
+#menuHrefs a:hover {
+    background-color:  #6f1c7b;
+    color:  white;
+
+}
+
+
+#menu{
+    color: white;
+    font-family: Comic Sans MS, sans-serif;
+    font-size: 1.7em;
+}
+#menu hr{
+    width: 500px;
+    max-width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+article h6{
+    padding: 2%;
+}
+
+/*Центральный блок*/
+#main_soc_block{
+    width: 100%;
+    padding: 2% 0;
+    border-bottom: 2px solid silver;
+    border-top: 2px solid silver;
+    margin: 20px 0;
+    float: left;
+
+    height: 154px;
+}
+#main_soc_block_in{
+    text-align: center;
+    padding: 1%;
+    height: 100px;
+    background-color: #fafafa;
+    border:1px solid silver;
+    border-radius: 73px;
+    width:500px;
+}
+#main_soc_block_in a{
+    float:left;
+    padding: 5px;
+    background-color: #e9af32;
+    border-radius: 6px;
+    color: #fff;
+    margin-left: 30%;
+}
+#but_news{
+    float:right;
+    margin-right:5%;
+    margin-bottom:2%;
+    padding: 2px;
+    background-color: #f48b8b;
+    border-radius: 7px;
+    color: #fff;
+}
+#but_news:hover{
+    background-color: #e9af32;
+
+}
+footer{
+    border-radius: 53px 53px 0px 0px;
+    margin-left: 4%;
+    margin-right:4%;
+    width: 90%;
+    border-top: 5px solid silver;
+    margin-top: 10px;
+    padding: 1%;
+    background-color: black;
+    float: bottom;
+    border-bottom: 5px solid black;
+}
+#page-wrap:after{
+    content: "";
+    display: block;
+
+}
+footer, #page-wrap:after{height: 10px;}
+#page-wrap {
+    min-height: 93%;
+
+    margin-left: 4%;
+    margin-right:4%;
+}
+.MessageBlock{
+    margin: 20px;
+    color: tomato;
+    font-family: Comic Sans MS, sans-serif;
+    font-size: 1.3em;
+}
+/*Блок Загрузки*/
+#down{
+    margin-left: 20px;
+    padding: 5px;
+    background-color: #6f1c7b;
+    border-radius: 5px;
+
+
+}

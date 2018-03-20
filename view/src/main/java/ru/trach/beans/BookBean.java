@@ -3,10 +3,12 @@ package ru.trach.beans;
 import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
 import ru.trach.ejb.BookManagerBean;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @ManagedBean
@@ -14,30 +16,59 @@ import java.util.List;
 public class BookBean {
     private String name;
     private String author;
-    private String imgUrl = "default";
+    private String genre;
+    private byte img[];
     private String description;
     private int price;
+    private Part file;
 
     @EJB
     private BookManagerBean bookManager;
     private static final Logger logger = Logger.getLogger(BookBean.class);
 
-    public void create(){
-        BookEntity book = new BookEntity(name,author,imgUrl,description,price);
-       logger.info("Created Book:" + book);
+    public void create() {
+
+        BookEntity book = new BookEntity(name,author,img,description,genre,price);
+
+        logger.info("Created Book:" + book);
         bookManager.create(book);
     }
 
-    public List<BookEntity> findAll(){
+    public List<BookEntity> findAll() {
         return bookManager.findAll();
     }
 
-    public BookEntity getById(long id){
+    public BookEntity getById(long id) {
         logger.info("GetByIdBook, id = " + id);
         //todo
-        return  null;
+        return null;
     }
 
+
+    public Part getFile() {
+        return file;
+    }
+
+    public void setFile(Part file) {
+        this.file = file;
+       img = new byte[(int) file.getSize()];
+        InputStream in = null;
+        try {
+            in = file.getInputStream();
+            in.read(img);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
 
     public String getName() {
         return name;
@@ -71,11 +102,12 @@ public class BookBean {
         this.price = price;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+
+    public String getGenre() {
+        return genre;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 }

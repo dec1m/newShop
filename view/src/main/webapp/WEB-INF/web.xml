@@ -12,5 +12,14 @@
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>ru.trach.controller.IndexController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

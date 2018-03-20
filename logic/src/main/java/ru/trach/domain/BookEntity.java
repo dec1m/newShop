@@ -6,6 +6,8 @@
 package ru.trach.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 import javax.persistence.*;
 
 /**
@@ -32,8 +34,11 @@ public class BookEntity implements Serializable {
     private String name;
     @Column(name = "author",nullable = false,length = 200)
     private String author;
-    @Column(name = "img",nullable = false,length = 200)
-    private String imgUrl = "default"; //todo Realise to Output File Image
+    @Lob
+    @Column(name = "img",nullable = false)
+    private byte[] img;
+    @Column(name = "ganre",nullable = false,length = 20)
+    private String ganre ;
     @Column(name = "description",nullable = false,length = 2000)
     private String description;
     @Column(name = "price",nullable = false)
@@ -45,45 +50,47 @@ public class BookEntity implements Serializable {
     public static final String GET_BY_NAME = "BOOK_GET_BY_NAME";
     public static final String GET_BY_ID = "BOOK_GET_BY_ID";
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BookEntity)) {
-            return false;
-        }
-        BookEntity other = (BookEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    public BookEntity(Long id,String name, String author, String imgUrl, String description, int price) {
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.imgUrl = imgUrl;
-        this.description = description;
-        this.price = price;
-    }
-    public BookEntity(String name, String author, String imgUrl, String description, int price) {
-        this.name = name;
-        this.author = author;
-        this.imgUrl = imgUrl;
-        this.description = description;
-        this.price = price;
-    }
 
     public BookEntity() {
     }
 
+    public BookEntity(Long id,String name, String author,byte[]  img, String description,String ganre, int price) {
+        this.name = name;
+        this.ganre = ganre;
+        this.author = author;
+        this.img = img;
+        this.description = description;
+        this.price = price;
+    }
+
+    public BookEntity(String name, String author, byte[] img, String description,String ganre, int price) {
+        this.name = name;
+        this.ganre = ganre;
+        this.author = author;
+        this.img = img;
+        this.description = description;
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookEntity that = (BookEntity) o;
+        return price == that.price &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(author, that.author) &&
+                Objects.equals(img, that.img) &&
+                Objects.equals(ganre, that.ganre) &&
+                Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, author, img, ganre, description, price);
+    }
 
     @Override
     public String toString() {
@@ -91,10 +98,18 @@ public class BookEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
+                ", ganre='" + ganre + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
     }
 
     public Long getId() {
@@ -122,13 +137,7 @@ public class BookEntity implements Serializable {
         this.author = author;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
 
     public String getDescription() {
         return description;
@@ -145,5 +154,12 @@ public class BookEntity implements Serializable {
     public void setPrice(int price) {
         this.price = price;
     }
-    
+
+    public String getGanre() {
+        return ganre;
+    }
+
+    public void setGanre(String ganre) {
+        this.ganre = ganre;
+    }
 }
