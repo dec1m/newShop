@@ -8,6 +8,7 @@ package ru.trach.domain;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 /**
  *
@@ -24,27 +25,40 @@ import javax.persistence.*;
 })
 @Table(name = "Books")
 public class BookEntity implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",nullable = false)
     private Long id;
+    @NotNull
+    @Size(min = 5,max = 40,message = "Название должно быть от 5-50 символов")
     @Column(name = "name",nullable = false,length = 50)
     private String name;
-    @Column(name = "author",nullable = false,length = 50)
+    @NotNull
+    @Size(min = 5,max = 40,message = "Имя автора должно быть от 5-40 символов")
+    @Column(name = "author",nullable = false,length = 40)
     private String author;
     @Lob
     @Column(name = "img",nullable = false)
     private byte[] img;
+    @NotNull
+    @Size(min = 3,max = 20)
     @Column(name = "genre",nullable = false,length = 20)
     private String genre;
+    @NotNull
+    @Size(min = 5,max = 2000,message = "Описание должно быть от 5-2000 символов")
     @Column(name = "description",nullable = false,length = 2000)
     private String description;
+    @Min(value = 5)
+    @Max(value = 10000)
     @Column(name = "price",nullable = false)
     private int price;
-    @Column(name = "isbn",nullable = false,length = 15)
+    @Pattern(regexp = "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")
+    @Column(name = "isbn",nullable = false,length = 30)
     private String isbn;
+    @NotNull
+    @Size(min = 3,max = 10)
     @Column(name = "publishing",nullable = false,length = 10)
     private String publishing;
 

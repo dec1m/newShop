@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.servlet.http.Part;
+import javax.validation.constraints.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -15,13 +16,26 @@ import java.util.List;
 @ManagedBean
 @RequestScoped
 public class BookBean {
+    @NotNull
+    @Size(min = 5,max = 40,message = "Название должно быть от 5-50 символов")
     private String name;
+    @NotNull
+    @Size(min = 5,max = 40,message = "Имя автора должно быть от 5-40 символов")
     private String author;
-    private String genre = "";
+    @NotNull
+    @Size(min = 3,max = 20,message = "Згачение должно быть от 3-20 символов")
+    private String genre;
     private byte img[];
+    @NotNull
+    @Size(min = 5,max = 2000,message = "Описание должно быть от 5-2000 символов")
     private String description;
+    @Pattern(message = "ISBN должен быть, пример: 'ISBN 978-0-596-52068-7'", regexp = "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$")
     private String isbn;
+    @NotNull
+    @Size(min = 3,max = 10,message = "Згачение должно быть от 3-10 символов")
     private String publishing;
+    @Min(value = 5,message = "Цена должна быть больше 5")
+    @Max(value = 10000,message = "Цена должна быть меньше 10000")
     private int price;
     private Part file;
 

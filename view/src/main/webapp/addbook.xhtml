@@ -24,15 +24,11 @@
 
 
         Имя: <h:inputText id="nameField" required="true" class="inputReg" value="#{bookBean.name}">
-                    <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
-                    <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
-                    <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+
               </h:inputText><br/><br/>
 
         Автор: <h:inputText id="authorField" required="true" class="inputReg" value="#{bookBean.author}">
-            <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
-            <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
-            <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+
                </h:inputText><br/><br/>
         ISBN: <h:inputText id="isbnField" required="true" class="inputReg" value="#{bookBean.isbn}">
 
@@ -42,9 +38,7 @@
               </h:inputText><br/><br/>
 
         Описание:<br/> <h:inputTextarea id="descField" required="true" rows="10" cols="80" class="inputRegDesc" value="#{bookBean.description}">
-            <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
-            <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
-            <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+
              </h:inputTextarea> <br/> <br/>
 
         Изображение: <h:inputFile id="imgField" required="true" value="#{bookBean.file}">
