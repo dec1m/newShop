@@ -6,7 +6,6 @@
 package ru.trach.domain;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Objects;
 import javax.persistence.*;
 
@@ -18,6 +17,7 @@ import javax.persistence.*;
 @SuppressWarnings("ALL")
 @NamedQueries({
         @NamedQuery(name= BookEntity.GET_BY_NAME, query = "SELECT b FROM BookEntity b WHERE b.name = :name"),
+        @NamedQuery(name= BookEntity.GET_BY_GENRE, query = "SELECT b FROM BookEntity b WHERE b.genre = :genre"),
         @NamedQuery(name= BookEntity.REMOVE, query = "DELETE FROM BookEntity b WHERE b.id = :id"),
         @NamedQuery(name= BookEntity.FIND_ALL, query = "SELECT b FROM BookEntity b"),
         @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id")
@@ -30,46 +30,54 @@ public class BookEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",nullable = false)
     private Long id;
-    @Column(name = "name",nullable = false,length = 100)
+    @Column(name = "name",nullable = false,length = 50)
     private String name;
-    @Column(name = "author",nullable = false,length = 200)
+    @Column(name = "author",nullable = false,length = 50)
     private String author;
     @Lob
     @Column(name = "img",nullable = false)
     private byte[] img;
-    @Column(name = "ganre",nullable = false,length = 20)
-    private String ganre ;
+    @Column(name = "genre",nullable = false,length = 20)
+    private String genre;
     @Column(name = "description",nullable = false,length = 2000)
     private String description;
     @Column(name = "price",nullable = false)
     private int price;
+    @Column(name = "isbn",nullable = false,length = 15)
+    private String isbn;
+    @Column(name = "publishing",nullable = false,length = 10)
+    private String publishing;
 
     
     public static final String FIND_ALL = "BOOK_FIND_ALL";
     public static final String REMOVE = "BOOK_REMOVE";
     public static final String GET_BY_NAME = "BOOK_GET_BY_NAME";
+    public static final String GET_BY_GENRE = "BOOK_GET_BY_GENRE";
     public static final String GET_BY_ID = "BOOK_GET_BY_ID";
 
 
     public BookEntity() {
     }
 
-    public BookEntity(Long id,String name, String author,byte[]  img, String description,String ganre, int price) {
+    public BookEntity(String name, String author, byte[] img, String genre, String description, int price, String isbn, String publishing) {
         this.name = name;
-        this.ganre = ganre;
         this.author = author;
         this.img = img;
+        this.genre = genre;
         this.description = description;
         this.price = price;
+        this.isbn = isbn;
+        this.publishing = publishing;
     }
-
-    public BookEntity(String name, String author, byte[] img, String description,String ganre, int price) {
+    public BookEntity(long id, String name, String author, byte[] img, String genre, String description, int price, String isbn, String publishing) {
         this.name = name;
-        this.ganre = ganre;
         this.author = author;
         this.img = img;
+        this.genre = genre;
         this.description = description;
         this.price = price;
+        this.isbn = isbn;
+        this.publishing = publishing;
     }
 
     @Override
@@ -82,14 +90,14 @@ public class BookEntity implements Serializable {
                 Objects.equals(name, that.name) &&
                 Objects.equals(author, that.author) &&
                 Objects.equals(img, that.img) &&
-                Objects.equals(ganre, that.ganre) &&
+                Objects.equals(genre, that.genre) &&
                 Objects.equals(description, that.description);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, author, img, ganre, description, price);
+        return Objects.hash(id, name, author, img, genre, description, price);
     }
 
     @Override
@@ -98,9 +106,11 @@ public class BookEntity implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
-                ", ganre='" + ganre + '\'' +
+                ", ganre='" + genre + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", isbn='" + isbn + '\'' +
+                ", publishing='" + publishing + '\'' +
                 '}';
     }
 
@@ -137,7 +147,21 @@ public class BookEntity implements Serializable {
         this.author = author;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
 
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getPublishing() {
+        return publishing;
+    }
+
+    public void setPublishing(String publishing) {
+        this.publishing = publishing;
+    }
 
     public String getDescription() {
         return description;
@@ -155,11 +179,11 @@ public class BookEntity implements Serializable {
         this.price = price;
     }
 
-    public String getGanre() {
-        return ganre;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setGanre(String ganre) {
-        this.ganre = ganre;
+    public void setGenre(String ganre) {
+        this.genre = ganre;
     }
 }

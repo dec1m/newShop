@@ -26,10 +26,16 @@ public class BookManagerBean {
 
      }
 
+     public List<BookEntity> getByGenre(String genre){
+         logger.info("Query findAll" + BookEntity.FIND_ALL);
+         TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.GET_BY_GENRE,BookEntity.class);
+         query.setParameter("genre",genre);
+         return query.getResultList();
+     }
+
      public List<BookEntity> findAll(){
          logger.info("Query findAll" + BookEntity.FIND_ALL);
           TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.FIND_ALL,BookEntity.class);
-          query.executeUpdate();
           return query.getResultList();
 
      }

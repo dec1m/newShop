@@ -3,6 +3,7 @@ package ru.trach.beans;
 import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
 import ru.trach.ejb.BookManagerBean;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,9 +17,11 @@ import java.util.List;
 public class BookBean {
     private String name;
     private String author;
-    private String genre;
+    private String genre = "";
     private byte img[];
     private String description;
+    private String isbn;
+    private String publishing;
     private int price;
     private Part file;
 
@@ -27,9 +30,7 @@ public class BookBean {
     private static final Logger logger = Logger.getLogger(BookBean.class);
 
     public void create() {
-
-        BookEntity book = new BookEntity(name,author,img,description,genre,price);
-
+        BookEntity book = new BookEntity(name, author, img, genre,description, price, isbn, publishing);
         logger.info("Created Book:" + book);
         bookManager.create(book);
     }
@@ -44,14 +45,16 @@ public class BookBean {
         return null;
     }
 
-
+    public List<BookEntity> getByGenre(){
+       return bookManager.getByGenre(genre);
+    }
     public Part getFile() {
         return file;
     }
 
     public void setFile(Part file) {
         this.file = file;
-       img = new byte[(int) file.getSize()];
+        img = new byte[(int) file.getSize()];
         InputStream in = null;
         try {
             in = file.getInputStream();
@@ -109,5 +112,21 @@ public class BookBean {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getPublishing() {
+        return publishing;
+    }
+
+    public void setPublishing(String publishing) {
+        this.publishing = publishing;
     }
 }

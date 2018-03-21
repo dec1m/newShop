@@ -43,7 +43,6 @@ public class BookManagerBeanTest {
         managerBean.findAll();
 
         verify(managerBean.entityManager).createNamedQuery(BookEntity.FIND_ALL,BookEntity.class);
-        verify(query).executeUpdate();
         verify(query).getResultList();
         verifyNoMoreInteractions(query,managerBean.entityManager,bookEntity);
 

@@ -23,21 +23,62 @@
         <h2>Добавить книгу</h2><br/>
 
 
-        Имя: <h:inputText class="inputReg" value="#{bookBean.name}"/><br/><br/>
-        Автор: <h:inputText class="inputReg" value="#{bookBean.author}"/><br/><br/>
-        Цена: <h:inputText class="inputReg" value="#{bookBean.price}"/><br/> <br/>
-        Описание:<br/> <h:inputTextarea rows="10" cols="80" class="inputRegDesc" value="#{bookBean.description}"/> <br/> <br/>
-        Изображение: <h:inputFile value="#{bookBean.file}"/>
-        Жанр:<h:selectOneMenu value="#{bookBean.genre}">
-                <f:selectItem itemLabel="Программирование" itemValue="Программирование"/>
-                <f:selectItem itemLabel="Психология" itemValue="Психология"/>
-                <f:selectItem itemLabel="Биография" itemValue="Биография"/>
-                <f:selectItem itemLabel="Художественные" itemValue="Художественные"/>
-                <f:selectItem itemLabel="Фантастика" itemValue="Фантастика"/>
-             </h:selectOneMenu><br/><br/>
+        Имя: <h:inputText id="nameField" required="true" class="inputReg" value="#{bookBean.name}">
+                    <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
+                    <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
+                    <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+              </h:inputText><br/><br/>
 
+        Автор: <h:inputText id="authorField" required="true" class="inputReg" value="#{bookBean.author}">
+            <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
+            <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
+            <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+               </h:inputText><br/><br/>
+        ISBN: <h:inputText id="isbnField" required="true" class="inputReg" value="#{bookBean.isbn}">
+
+        </h:inputText><br/><br/>
+        Цена: <h:inputText id="priceField" required="true" class="inputReg" value="#{bookBean.price}">
+
+              </h:inputText><br/><br/>
+
+        Описание:<br/> <h:inputTextarea id="descField" required="true" rows="10" cols="80" class="inputRegDesc" value="#{bookBean.description}">
+            <f:validator validatorId="ru.trach.validators.NotNullValidator"/>
+            <f:validator validatorId="ru.trach.validators.MinLengthValidator"/>
+            <f:validator validatorId="ru.trach.validators.MaxLengthValidator"/>
+             </h:inputTextarea> <br/> <br/>
+
+        Изображение: <h:inputFile id="imgField" required="true" value="#{bookBean.file}">
+
+            </h:inputFile>
+
+        Жанр:<h:selectOneMenu value="#{bookBean.genre}">
+                <f:selectItem itemLabel="Программирование" itemValue="programming"/>
+                <f:selectItem itemLabel="Психология" itemValue="psychology"/>
+                <f:selectItem itemLabel="Биография" itemValue="biography"/>
+                <f:selectItem itemLabel="История" itemValue="history"/>
+                <f:selectItem itemLabel="Религия" itemValue="religion"/>
+                <f:selectItem itemLabel="Физика" itemValue="physics"/>
+                <f:selectItem itemLabel="Астрономия" itemValue="astronomy"/>
+                <f:selectItem itemLabel="Базы данных" itemValue="databases"/>
+                <f:selectItem itemLabel="Фэнтези" itemValue="fantasy"/>
+                <f:selectItem itemLabel="Художественные" itemValue="artistic"/>
+                <f:selectItem itemLabel="Фантастика" itemValue="fantastic"/>
+             </h:selectOneMenu><br/><br/>
+        Издательство: <h:selectOneMenu value="#{bookBean.publishing}">
+            <f:selectItem itemLabel="Вече" itemValue="вече"/>
+            <f:selectItem itemLabel="Литера" itemValue="литера"/>
+            <f:selectItem itemLabel="Мир книги" itemValue="мир книги"/>
+            <f:selectItem itemLabel="Питер" itemValue="Питер"/>
+            <f:selectItem itemLabel="Appres" itemValue="appres"/>
+        </h:selectOneMenu><br/><br/>
 
         <h:commandButton class="buttonIndex" value="Создать товар" action="#{bookBean.create}"/>
+            <p><h:message for="nameField" styleClass="error"/> </p>
+            <p><h:message for="authorField" styleClass="error"/> </p>
+            <p><h:message for="priceField" styleClass="error"/> </p>
+            <p><h:message for="descField" styleClass="error"/> </p>
+            <p><h:message for="imgField" styleClass="error"/> </p>
+
         </div>
     </h:form>
 </h:body>
