@@ -47,5 +47,10 @@ public class BookManagerBean {
           query.executeUpdate();
 
      }
+     public byte[] getImgById(long id){
+         TypedQuery<byte[]> query = entityManager.createNamedQuery(BookEntity.GET_IMG_BY_ID,byte[].class);
+          query.setParameter("id",id);
+          return  query.getSingleResult();
+     }
      
 }

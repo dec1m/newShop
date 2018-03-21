@@ -136,7 +136,8 @@ img {
     background-color:white;
     color:black;
 }
-#divReg{
+
+.divReg{
     margin-top: 20px;
     margin: auto;
     width: 60%;
@@ -322,13 +323,22 @@ form #send_reg:hover{
     margin-right: 2%;
     min-height: 400px;
 }
-#wrapper #artiсless article img{
-    margin-left: 23%;
-    margin-top: 20px;
-    width: auto;
-    height: 200px;
-    border-radius: 5px 5px 0px 0px;
-    border-bottom: 1px solid silver;
+/*Обложки книг*/
+#image{
+    width: 190px;
+    height: 250px;
+
+}
+/*данные  книги, DataTable*/
+.bookData{
+    margin-left: 10px;
+    width: 400px;
+    height: 250px;
+}
+/*DataTable*/
+#dataTable{
+    float:right;
+    padding: 10px;
 }
 /*Стили для футера*/
 #menuHrefs a {

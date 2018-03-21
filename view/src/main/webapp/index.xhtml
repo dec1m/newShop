@@ -18,30 +18,32 @@
 <h:button class="buttonIndex" value="Войти" outcome="login.xhtml"/>
 
 
-<div>
-    <h:form>
-    <h:commandButton class="buttonIndex" value="Войти" action="#{bookBean.genre}"   />
-
-    </h:form>
-</div>
+<div id="dataTable">
 <h:dataTable value="#{bookBean.findAll()}" var="book" cellpadding="10px">
+
     <h:column>
-        <h:graphicImage value="#{bookBean.img} " width="120" height="160"/>
+        <div id="image">
+        <h:graphicImage  url="/image?id=#{book.id}" height="250" width="190" />
+        </div>
     </h:column>
     <h:column>
+        <div class="bookData">
         <p><strong>Название:</strong>#{book.name}</p>
         <p><strong>Автор:</strong>#{book.author}</p>
         <p><strong>Жанр:</strong>#{book.genre}</p>
         <p><strong>Издательство:</strong>#{book.publishing}</p>
         <p><strong>Цена:</strong>#{book.price}</p>
         <p><strong>ISBN:</strong>#{book.isbn}</p>
+        </div>
     </h:column>
     <h:column>
-        <p><strong>Описание:</strong>#{book.description}</p>
+        <div class="bookData">
+        <p><strong>Описание:<br/><br/></strong>#{book.description}</p>
+        </div>
     </h:column>
-
+        <hr/>
 </h:dataTable>
-
+</div>
 
 </body>
 </html>

@@ -21,7 +21,8 @@ import javax.validation.constraints.*;
         @NamedQuery(name= BookEntity.GET_BY_GENRE, query = "SELECT b FROM BookEntity b WHERE b.genre = :genre"),
         @NamedQuery(name= BookEntity.REMOVE, query = "DELETE FROM BookEntity b WHERE b.id = :id"),
         @NamedQuery(name= BookEntity.FIND_ALL, query = "SELECT b FROM BookEntity b"),
-        @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id")
+        @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id"),
+        @NamedQuery(name= BookEntity.GET_IMG_BY_ID, query = "SELECT b.img FROM BookEntity b WHERE b.id = :id")
 })
 @Table(name = "Books")
 public class BookEntity implements Serializable {
@@ -68,6 +69,7 @@ public class BookEntity implements Serializable {
     public static final String GET_BY_NAME = "BOOK_GET_BY_NAME";
     public static final String GET_BY_GENRE = "BOOK_GET_BY_GENRE";
     public static final String GET_BY_ID = "BOOK_GET_BY_ID";
+    public static final String GET_IMG_BY_ID = "BOOK_GET_IMG_BY_ID";
 
 
     public BookEntity() {
