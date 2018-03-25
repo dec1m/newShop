@@ -16,6 +16,7 @@ import java.util.List;
 @ManagedBean
 @RequestScoped
 public class BookBean {
+    private long id;
     @NotNull
     @Size(min = 5,max = 40,message = "Название должно быть от 5-50 символов")
     private String name;
@@ -27,7 +28,7 @@ public class BookBean {
     private String genre;
     private byte img[];
     @NotNull
-    @Size(min = 5,max = 2000,message = "Описание должно быть от 5-2000 символов")
+    @Size(min = 100,max = 5000,message = "Описание должно быть от 100-5000 символов")
     private String description;
     @Pattern(regexp = "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$",
             message = "ISBN должен быть, пример: 'ISBN 978-0-596-52068-7'")
@@ -54,10 +55,17 @@ public class BookBean {
         return bookManager.findAll();
     }
 
-    public BookEntity getById(long id) {
-        logger.info("GetByIdBook, id = " + id);
-        //todo
-        return null;
+    public void getById() {
+      BookEntity book = bookManager.findById(id);
+      name = book.getName();
+      author = book.getAuthor();
+      genre = book.getGenre();
+      img = book.getImg();
+      description = book.getDescription();
+      publishing = book.getPublishing();
+      isbn = book.getIsbn();
+      price = book.getPrice();
+
     }
 
     public List<BookEntity> getByGenre(){
@@ -78,6 +86,10 @@ public class BookBean {
             e.printStackTrace();
         }
 
+    }
+
+    public List<String> findAllGenres(){
+       return bookManager.getGenres();
     }
 
     public byte[] getImg() {
@@ -120,6 +132,13 @@ public class BookBean {
         this.price = price;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getGenre() {
         return genre;

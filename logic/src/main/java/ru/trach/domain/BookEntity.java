@@ -21,6 +21,7 @@ import javax.validation.constraints.*;
         @NamedQuery(name= BookEntity.GET_BY_GENRE, query = "SELECT b FROM BookEntity b WHERE b.genre = :genre"),
         @NamedQuery(name= BookEntity.REMOVE, query = "DELETE FROM BookEntity b WHERE b.id = :id"),
         @NamedQuery(name= BookEntity.FIND_ALL, query = "SELECT b FROM BookEntity b"),
+        @NamedQuery(name= BookEntity.FIND_ALL_GENRES, query = "SELECT DISTINCT b.genre FROM BookEntity b"),
         @NamedQuery(name= BookEntity.GET_BY_ID, query = "SELECT b FROM BookEntity b WHERE b.id = :id"),
         @NamedQuery(name= BookEntity.GET_IMG_BY_ID, query = "SELECT b.img FROM BookEntity b WHERE b.id = :id")
 })
@@ -48,8 +49,8 @@ public class BookEntity implements Serializable {
     @Column(name = "genre",nullable = false,length = 20)
     private String genre;
     @NotNull
-    @Size(min = 5,max = 2000,message = "Описание должно быть от 5-2000 символов")
-    @Column(name = "description",nullable = false,length = 2000)
+    @Size(min = 100,max = 5000,message = "Описание должно быть от 5-2000 символов")
+    @Column(name = "description",nullable = false,length = 5000)
     private String description;
     @Min(value = 5)
     @Max(value = 10000)
@@ -64,6 +65,7 @@ public class BookEntity implements Serializable {
     private String publishing;
 
     
+    public static final String FIND_ALL_GENRES = "BOOK_FIND_ALL_GENRES";
     public static final String FIND_ALL = "BOOK_FIND_ALL";
     public static final String REMOVE = "BOOK_REMOVE";
     public static final String GET_BY_NAME = "BOOK_GET_BY_NAME";

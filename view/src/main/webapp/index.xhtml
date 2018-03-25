@@ -5,45 +5,40 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head><h:outputStylesheet name="css/style.css" /></h:head>
+
 <body>
+<ui:composition template="patterns/template.xhtml">
 
-<div id="header">
-    <center id='eugen'><a href='/'>EugenSpaceTechnologyInterProGalaxyOneGeneration™</a></center>
-</div>
-<h:button  class="buttonIndex" value="Главная" outcome="index.xhtml"/>
-<h:button class="buttonIndex" value="Добавить книгу" outcome="addbook.xhtml"/>
-<h:button class="buttonIndex" value="Книги" outcome="products.xhtml"/>
-<h:button id="register" class="buttonIndex" value="Регистрация" outcome="register.xhtml"/>
-<h:button class="buttonIndex" value="Войти" outcome="login.xhtml"/>
+<ui:define name="body">
+    <div id="dataTable">
+        <h:dataTable value="#{bookBean.findAll()}" var="book" cellpadding="10px">
 
+            <h:column>
+                <div id="image">
+                    <h:graphicImage  url="/image?id=#{book.id}" height="250" width="190"/>
+                </div><br/>
 
-<div id="dataTable">
-<h:dataTable value="#{bookBean.findAll()}" var="book" cellpadding="10px">
-
-    <h:column>
-        <div id="image">
-        <h:graphicImage  url="/image?id=#{book.id}" height="250" width="190" />
-        </div>
-    </h:column>
-    <h:column>
-        <div class="bookData">
-        <p><strong>Название:</strong>#{book.name}</p>
-        <p><strong>Автор:</strong>#{book.author}</p>
-        <p><strong>Жанр:</strong>#{book.genre}</p>
-        <p><strong>Издательство:</strong>#{book.publishing}</p>
-        <p><strong>Цена:</strong>#{book.price}</p>
-        <p><strong>ISBN:</strong>#{book.isbn}</p>
-        </div>
-    </h:column>
-    <h:column>
-        <div class="bookData">
-        <p><strong>Описание:<br/><br/></strong>#{book.description}</p>
-        </div>
-    </h:column>
-        <hr/>
-</h:dataTable>
-</div>
-
+            </h:column>
+            <h:column>
+                <div class="bookData">
+                    <p><strong>Название:</strong>#{book.name}</p>
+                    <p><strong>Автор:</strong>#{book.author}</p>
+                    <p><strong>Жанр:</strong>#{book.genre}</p>
+                    <p><strong>Издательство:</strong>#{book.publishing}</p>
+                    <p><strong>Цена:</strong>#{book.price}</p>
+                    <p><strong>ISBN:</strong>#{book.isbn}</p>
+                    <h:button class="buttonBook" value="Подробнее" outcome="viewbook.xhtml?id=#{book.id}"/>
+                </div>
+            </h:column>
+            <h:column>
+                <div class="bookData">
+                    <p><strong>Описание:<br/><br/></strong>#{book.description}</p>
+                </div>
+            </h:column>
+            <hr/>
+        </h:dataTable>
+    </div>
+</ui:define>
+</ui:composition>
 </body>
 </html>

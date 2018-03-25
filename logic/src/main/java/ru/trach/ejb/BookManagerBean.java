@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,41 +17,52 @@ import javax.persistence.TypedQuery;
 @Stateless
 @LocalBean
 public class BookManagerBean {
-   private final static Logger logger = Logger.getLogger(BookManagerBean.class);
-     @PersistenceContext(unitName = "PUnit")
-     protected EntityManager entityManager;
-     
-     public void create(BookEntity book) {
-         logger.info(book.toString());
-          entityManager.persist(book);
+    private final static Logger logger = Logger.getLogger(BookManagerBean.class);
+    @PersistenceContext(unitName = "PUnit")
+    protected EntityManager entityManager;
 
-     }
+    public void create(BookEntity book) {
+        logger.info(book.toString());
+        entityManager.persist(book);
 
-     public List<BookEntity> getByGenre(String genre){
-         logger.info("Query findAll" + BookEntity.FIND_ALL);
-         TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.GET_BY_GENRE,BookEntity.class);
-         query.setParameter("genre",genre);
-         return query.getResultList();
-     }
+    }
 
-     public List<BookEntity> findAll(){
-         logger.info("Query findAll" + BookEntity.FIND_ALL);
-          TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.FIND_ALL,BookEntity.class);
-          return query.getResultList();
+    public List<BookEntity> getByGenre(String genre) {
+        logger.info("Query findAll" + BookEntity.FIND_ALL);
+        TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.GET_BY_GENRE, BookEntity.class);
+        query.setParameter("genre", genre);
+        return query.getResultList();
+    }
 
-     }
-     
-     public void remove(BookEntity book){
-         logger.info("For Removing: " + book.toString());
-          Query query = entityManager.createNamedQuery(BookEntity.REMOVE);
-          query.setParameter("id", book.getId());
-          query.executeUpdate();
+    public List<BookEntity> findAll() {
+        logger.info("Query findAll" + BookEntity.FIND_ALL);
+        TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.FIND_ALL, BookEntity.class);
+        return query.getResultList();
 
-     }
-     public byte[] getImgById(long id){
-         TypedQuery<byte[]> query = entityManager.createNamedQuery(BookEntity.GET_IMG_BY_ID,byte[].class);
-          query.setParameter("id",id);
-          return  query.getSingleResult();
-     }
-     
+    }
+
+    public void remove(BookEntity book) {
+        logger.info("For Removing: " + book.toString());
+        Query query = entityManager.createNamedQuery(BookEntity.REMOVE);
+        query.setParameter("id", book.getId());
+        query.executeUpdate();
+
+    }
+
+    public byte[] getImgById(long id) {
+        TypedQuery<byte[]> query = entityManager.createNamedQuery(BookEntity.GET_IMG_BY_ID, byte[].class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
+    public List<String> getGenres() {
+        TypedQuery<String> query = entityManager.createNamedQuery(BookEntity.FIND_ALL_GENRES, String.class);
+        return query.getResultList();
+    }
+    public BookEntity findById(long id){
+        TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.GET_BY_ID, BookEntity.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
+    }
+
 }

@@ -5,77 +5,74 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head><h:outputStylesheet name="css/style.css" /></h:head>
-<div id="header">
-    <center id='eugen'><a href='/'>EugenSpaceTechnologyInterProGalaxyOneGeneration™</a></center>
-</div>
-
-<h:button  class="buttonIndex" value="Главная" outcome="index.xhtml"/>
-<h:button class="buttonIndex" value="Добавить книгу" outcome="addbook.xhtml"/>
-<h:button class="buttonIndex" value="Книги" outcome="products.xhtml"/>
-<h:button class="buttonIndex" value="Войти" outcome="login.xhtml"/>
-<h:button id="register" class="buttonIndex" value="Регистрация" outcome="register.xhtml"/>
-
-
 <h:body>
-    <h:form enctype="multipart/form-data">
-        <div class="divReg">
-        <h2>Добавить книгу</h2><br/>
+<ui:composition template="patterns/template.xhtml">
 
 
-        Имя: <h:inputText id="nameField" required="true" class="inputReg" value="#{bookBean.name}">
+        <ui:define name="body">
+            <h:form enctype="multipart/form-data">
+                <div class="divReg">
+                    <h2>Добавить книгу</h2><br/>
 
-              </h:inputText><br/><br/>
 
-        Автор: <h:inputText id="authorField" required="true" class="inputReg" value="#{bookBean.author}">
+                    Имя: <h:inputText id="nameField" required="true" class="inputReg" value="#{bookBean.name}">
 
-               </h:inputText><br/><br/>
-        ISBN: <h:inputText id="isbnField" required="true" class="inputReg" value="#{bookBean.isbn}">
+                </h:inputText><br/><br/>
 
-        </h:inputText><br/><br/>
-        Цена: <h:inputText id="priceField" required="true" class="inputReg" value="#{bookBean.price}">
+                    Автор: <h:inputText id="authorField" required="true" class="inputReg" value="#{bookBean.author}">
 
-              </h:inputText><br/><br/>
+                </h:inputText><br/><br/>
+                    ISBN: <h:inputText id="isbnField" required="true" class="inputReg" value="#{bookBean.isbn}">
 
-        Описание:<br/> <h:inputTextarea id="descField" required="true" rows="10" cols="80" class="inputRegDesc" value="#{bookBean.description}">
+                </h:inputText><br/><br/>
+                    Цена: <h:inputText id="priceField" required="true" class="inputReg" value="#{bookBean.price}">
 
-             </h:inputTextarea> <br/> <br/>
+                </h:inputText><br/><br/>
 
-        Изображение: <h:inputFile id="imgField" required="true" value="#{bookBean.file}">
+                    Описание:<br/> <h:inputTextarea id="descField" required="true" rows="10" cols="80"
+                                                    class="inputRegDesc"
+                                                    value="#{bookBean.description}">
 
-            </h:inputFile>
+                </h:inputTextarea> <br/> <br/>
 
-        Жанр:<h:selectOneMenu value="#{bookBean.genre}">
-                <f:selectItem itemLabel="Программирование" itemValue="programming"/>
-                <f:selectItem itemLabel="Психология" itemValue="psychology"/>
-                <f:selectItem itemLabel="Биография" itemValue="biography"/>
-                <f:selectItem itemLabel="История" itemValue="history"/>
-                <f:selectItem itemLabel="Религия" itemValue="religion"/>
-                <f:selectItem itemLabel="Физика" itemValue="physics"/>
-                <f:selectItem itemLabel="Астрономия" itemValue="astronomy"/>
-                <f:selectItem itemLabel="Базы данных" itemValue="databases"/>
-                <f:selectItem itemLabel="Фэнтези" itemValue="fantasy"/>
-                <f:selectItem itemLabel="Художественные" itemValue="artistic"/>
-                <f:selectItem itemLabel="Фантастика" itemValue="fantastic"/>
-             </h:selectOneMenu><br/><br/>
-        Издательство: <h:selectOneMenu value="#{bookBean.publishing}">
-            <f:selectItem itemLabel="Вече" itemValue="вече"/>
-            <f:selectItem itemLabel="Литера" itemValue="литера"/>
-            <f:selectItem itemLabel="Мир книги" itemValue="мир книги"/>
-            <f:selectItem itemLabel="Питер" itemValue="Питер"/>
-            <f:selectItem itemLabel="Appres" itemValue="appres"/>
-        </h:selectOneMenu><br/><br/>
+                    Изображение: <h:inputFile id="imgField" required="true" value="#{bookBean.file}">
 
-        <h:commandButton class="buttonIndex" value="Создать товар" action="#{bookBean.create}"/>
-            <p><h:message for="nameField" styleClass="error"/> </p>
-            <p><h:message for="authorField" styleClass="error"/> </p>
-            <p><h:message for="priceField" styleClass="error"/> </p>
-            <p><h:message for="descField" styleClass="error"/> </p>
-            <p><h:message for="imgField" styleClass="error"/> </p>
-            <p><h:message for="isbnField" styleClass="error"/> </p>
+                </h:inputFile>
 
-        </div>
-    </h:form>
+                    Жанр:<h:selectOneMenu value="#{bookBean.genre}">
+                    <f:selectItem itemLabel="Программирование" itemValue="programming"/>
+                    <f:selectItem itemLabel="Психология" itemValue="psychology"/>
+                    <f:selectItem itemLabel="Биография" itemValue="biography"/>
+                    <f:selectItem itemLabel="История" itemValue="history"/>
+                    <f:selectItem itemLabel="Религия" itemValue="religion"/>
+                    <f:selectItem itemLabel="Физика" itemValue="physics"/>
+                    <f:selectItem itemLabel="Астрономия" itemValue="astronomy"/>
+                    <f:selectItem itemLabel="Базы данных" itemValue="databases"/>
+                    <f:selectItem itemLabel="Фэнтези" itemValue="fantasy"/>
+                    <f:selectItem itemLabel="Художественные" itemValue="artistic"/>
+                    <f:selectItem itemLabel="Фантастика" itemValue="fantastic"/>
+                </h:selectOneMenu><br/><br/>
+                    Издательство: <h:selectOneMenu value="#{bookBean.publishing}">
+                    <f:selectItem itemLabel="Вече" itemValue="вече"/>
+                    <f:selectItem itemLabel="Литера" itemValue="литера"/>
+                    <f:selectItem itemLabel="Мир книги" itemValue="мир книги"/>
+                    <f:selectItem itemLabel="Питер" itemValue="Питер"/>
+                    <f:selectItem itemLabel="Appres" itemValue="appres"/>
+                </h:selectOneMenu><br/><br/>
+
+                    <h:commandButton class="buttonIndex" value="Создать товар" action="#{bookBean.create}"/>
+                    <p><h:message for="nameField" styleClass="error"/></p>
+                    <p><h:message for="authorField" styleClass="error"/></p>
+                    <p><h:message for="priceField" styleClass="error"/></p>
+                    <p><h:message for="descField" styleClass="error"/></p>
+                    <p><h:message for="imgField" styleClass="error"/></p>
+                    <p><h:message for="isbnField" styleClass="error"/></p>
+
+                </div>
+            </h:form>
+        </ui:define>
+
+
+</ui:composition>
 </h:body>
-
 </html>
