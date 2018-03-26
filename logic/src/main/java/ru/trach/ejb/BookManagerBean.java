@@ -59,6 +59,7 @@ public class BookManagerBean {
         TypedQuery<String> query = entityManager.createNamedQuery(BookEntity.FIND_ALL_GENRES, String.class);
         return query.getResultList();
     }
+
     public BookEntity findById(long id){
         TypedQuery<BookEntity> query = entityManager.createNamedQuery(BookEntity.GET_BY_ID, BookEntity.class);
         query.setParameter("id", id);

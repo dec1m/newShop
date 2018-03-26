@@ -7,6 +7,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="patterns/template.xhtml">
-
+    <ui:define name="body">
+        <h:form>
+            <div class="divReg">
+        Логин: <h:inputText styleClass="inputReg" value="#{authBean.login}"/><br/><br/>
+        Пароль: <h:inputText styleClass="inputReg" value="#{authBean.password}"/><br/><br/>
+        <h:commandButton styleClass="buttonBook" value="Войти" rendered="#{!authBean.loggedIn}" action="#{authBean.doLogin}"/>
+        <h:commandButton styleClass="buttonBook" value="Выйти" rendered="#{authBean.loggedIn}" action="#{authBean.unLogin()}"/>
+        <h:button styleClass="buttonBook" rendered="#{!authBean.loggedIn}"  value="Зарегистрироваться" outcome="register.xhtml"/>
+            </div>
+        </h:form>
+    </ui:define>
 </ui:composition>
 </html>

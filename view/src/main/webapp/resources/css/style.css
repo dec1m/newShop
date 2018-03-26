@@ -38,9 +38,10 @@ a:active{color: #8ce4a6;}
     height: 70px;
     width: 20%;
     background-color: #00884f;
-    border: 0px solid #00884f;
+    border: 1px solid #00884f;
     font-size: 1.2em;
 }
+
 
 .buttonBook{
     height: 50px;

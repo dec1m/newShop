@@ -3,7 +3,6 @@ package ru.trach.beans;
 import org.apache.log4j.Logger;
 import ru.trach.domain.BookEntity;
 import ru.trach.ejb.BookManagerBean;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

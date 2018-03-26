@@ -13,8 +13,10 @@
         <h:button  class="buttonIndex" value="Главная" outcome="index.xhtml"/>
         <h:button class="buttonIndex" value="Добавить книгу" outcome="addbook.xhtml"/>
         <h:button class="buttonIndex" value="Книги" outcome="products.xhtml"/>
-        <h:button id="register" class="buttonIndex" value="Регистрация" outcome="register.xhtml"/>
-        <h:button class="buttonIndex" value="Войти" outcome="login.xhtml"/>
+        <h:button id="register"  rendered="#{!authBean.loggedIn}" class="buttonIndex" value="Регистрация" outcome="register.xhtml"/>
+        <h:button class="buttonIndex" rendered="#{!authBean.loggedIn}" value="Войти" outcome="login.xhtml"/>
+        <h:commandButton class="buttonIndex" rendered="#{authBean.loggedIn}" value="Выйти" action="#{authBean.unLogin}"/>
+        <h:button class="buttonIndex" rendered="#{authBean.loggedIn}" value="Привет, #{userBean.name}"/>
 
 
     </ui:composition>
