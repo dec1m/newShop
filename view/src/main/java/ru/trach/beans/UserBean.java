@@ -4,13 +4,16 @@ import ru.trach.auth.domain.Role;
 import ru.trach.ejb.UserManagerBean;
 
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Named
-public class UserBean {
+@SessionScoped
+public class UserBean implements Serializable {
 
     @EJB
     private UserManagerBean userManagerBean;

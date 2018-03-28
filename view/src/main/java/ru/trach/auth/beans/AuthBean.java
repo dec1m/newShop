@@ -1,9 +1,8 @@
 package ru.trach.auth.beans;
 
+
 import ru.trach.auth.ejb.AuthenticationManager;
-
 import javax.ejb.EJB;
-
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -17,6 +16,7 @@ public class AuthBean implements Serializable {
     private String login;
     private String password;
 
+
     public void doLogin(){
         if (login == null || password == null) { loggedIn = false; return; }
         if (login.length() < 1 || password.length() < 1) { loggedIn =  false; return; }
@@ -25,8 +25,9 @@ public class AuthBean implements Serializable {
 
 
     }
-    public void unLogin(){
+    public String unLogin(){
         loggedIn = false;
+        return "login.xhtml";
     }
     public boolean isLoggedIn() {
         return loggedIn;

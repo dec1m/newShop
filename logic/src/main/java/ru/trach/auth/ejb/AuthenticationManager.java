@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import ru.trach.auth.domain.User;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -13,13 +14,14 @@ public class AuthenticationManager {
     private final static Logger logger = Logger.getLogger(AuthenticationManager.class);
     @PersistenceContext(unitName = "PUnit")
     private EntityManager entityManager;
+    private User user;
 
     public boolean login(String email, String password) {
         logger.info(email + " " + password);
         if (email == null || password == null) { return false; }
         if (email.length() < 1 || password.length() < 1) { return false; }
 
-        User user = entityManager.find(User.class, email);
+         user = entityManager.find(User.class, email);
 
 
         if (user == null) {return false;}
